@@ -5,9 +5,6 @@ const nextConfig: NextConfig = {
   // A linha mais importante para criar a pasta `out`:
   output: 'export',
   
-  // Ajuda a evitar erros de rota na Hostinger:
-  trailingSlash: true,
-
   // Desativa a verificação de tipo durante o build para evitar erros de dependências
   typescript: {
     ignoreBuildErrors: true,
