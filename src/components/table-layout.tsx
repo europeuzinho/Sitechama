@@ -70,7 +70,7 @@ export function TableLayout({ restaurant, currentUserRole }: TableLayoutProps) {
         }
     };
     
-    const getOverallTableStatus = (order: Order | undefined) => {
+    const getOverallTableStatus = (order: Order | null | undefined) => {
         if (!order) {
             return { text: 'Livre', color: 'bg-green-500 border-green-600' };
         }
