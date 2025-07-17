@@ -74,10 +74,11 @@ const generateClientChartData = (restaurantId: string) => {
 };
 
 const generateRatingChartData = (reviews: Review[]) => {
-    const ratingCounts = { '5': 0, '4': 0, '3': 0, '2': 0, '1': 0 };
+    const ratingCounts: { [key: string]: number } = { '5': 0, '4': 0, '3': 0, '2': 0, '1': 0 };
     reviews.forEach(review => {
-        if (review.rating in ratingCounts) {
-            ratingCounts[review.rating as keyof typeof ratingCounts]++;
+        const ratingStr = String(review.rating);
+        if (ratingStr in ratingCounts) {
+            ratingCounts[ratingStr]++;
         }
     });
     
