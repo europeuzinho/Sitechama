@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 25 95% 53%; /* Orange */
+    --primary-foreground: 0 0% 100%; /* White */
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%; /* Red */
+    --destructive-foreground: 210 40% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 25 95% 53%; /* Orange */
+    --chart-1: 25 95% 53%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 0 84.2% 60.2%;
+    --chart-5: 340 75% 65%;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 210 40% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 25 95% 53%; /* Orange */
+    --primary-foreground: 0 0% 100%; /* White */
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 72% 51%; /* Red */
+    --destructive-foreground: 210 40% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 25 95% 53%; /* Orange */
+    --chart-1: 25 95% 53%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 0 72% 51%;
+    --chart-5: 340 75% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom Calendar Styles for Admin Panel */
+@layer components {
+  [data-radix-dialog-content] .rdp {
+    --rdp-cell-size: 3.5rem;
+    --rdp-caption-font-weight: 600;
+    @apply p-4;
+  }
+  
+  [data-radix-dialog-content] .rdp-months {
+    @apply p-0;
+  }
+
+  [data-radix-dialog-content] .rdp-caption_label {
+    @apply text-xl font-headline;
+  }
+  
+  [data-radix-dialog-content] .rdp-nav_button {
+    @apply h-9 w-9 text-foreground hover:bg-accent/80 rounded-full;
+  }
+
+  [data-radix-dialog-content] .rdp-head_cell {
+    @apply text-muted-foreground font-medium text-sm w-full;
+  }
+  
+  [data-radix-dialog-content] .rdp-day {
+     @apply w-full h-full rounded-full flex items-center justify-center transition-colors font-light text-base;
+  }
+  
+  [data-radix-dialog-content] .rdp-day:not([disabled]):hover {
+     @apply bg-accent/50;
+  }
+
+  [data-radix-dialog-content] .rdp-day_selected {
+     @apply bg-primary text-primary-foreground font-semibold hover:bg-primary/90 focus:bg-primary;
+  }
+
+  [data-radix-dialog-content] .rdp-day_today {
+     @apply ring-1 ring-primary/70;
+  }
+
+  [data-radix-dialog-content] .rdp-day_outside {
+     @apply text-muted-foreground;
+  }
+
+  [data-radix-dialog-content] .rdp-day_disabled {
+    @apply text-muted-foreground hover:bg-transparent;
+  }
+}
