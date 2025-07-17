@@ -2,7 +2,7 @@
 
 "use client";
 
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
@@ -13,7 +13,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Search } from 'lucide-react';
 
 
-export default function RestaurantsPage() {
+function RestaurantsPageContent() {
   const searchParams = useSearchParams();
   const initialSearchQuery = searchParams.get('search') || '';
 
@@ -123,4 +123,13 @@ export default function RestaurantsPage() {
       <Footer />
     </div>
   );
+}
+
+
+export default function RestaurantsPage() {
+    return (
+        <Suspense fallback={<div>Carregando filtros...</div>}>
+            <RestaurantsPageContent />
+        </Suspense>
+    );
 }
