@@ -159,7 +159,7 @@ export function ProductionTicket({}: ProductionTicketProps) {
                     </div>
                     <div className="flex justify-between">
                         <span>Comanda:</span>
-                        <span className="font-semibold text-lg">{order.comandaId}</span>
+                        <span className="font-semibold text-lg">{order.id}</span>
                     </div>
                     <div className="flex justify-between">
                         <span>Data:</span>
