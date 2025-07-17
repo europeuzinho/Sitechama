@@ -2,9 +2,12 @@
 import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // A linha mais importante para criar a pasta `out`:
   output: 'export',
+  
+  // Ajuda a evitar erros de rota na Hostinger:
   trailingSlash: true,
+
   typescript: {
     ignoreBuildErrors: false,
   },
@@ -12,7 +15,7 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: false,
   },
   images: {
-    unoptimized: true,
+    unoptimized: true, // Essencial para exportação estática
     remotePatterns: [
       {
         protocol: 'https',
