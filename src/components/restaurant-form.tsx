@@ -54,7 +54,7 @@ interface RestaurantFormProps {
     restaurant?: Partial<Restaurant> | null;
 }
 
-const defaultValues: Omit<Restaurant, 'id' | 'reviews' | 'createdAt' | 'tables' | 'employees' | 'blockedDates' | 'cakeOrderSettings' | 'payoutSettings'> = {
+const defaultValues: Partial<RestaurantFormData> = {
   name: "",
   location: "",
   logo: "",
@@ -86,7 +86,7 @@ export function RestaurantForm({ onFormSubmit, restaurant }: RestaurantFormProps
         cep: "",
         ...(restaurant ? { ...restaurant } : {}),
         ownerEmail: isNewRestaurantOnboarding ? user?.email || "" : restaurant?.ownerEmail || "",
-    }
+    } as RestaurantFormData,
   });
 
   const { fields, append, remove } = useFieldArray({
@@ -100,7 +100,7 @@ export function RestaurantForm({ onFormSubmit, restaurant }: RestaurantFormProps
         ...restaurant,
         cep: restaurant?.payoutSettings?.cnpj || "",
         ownerEmail: isNewRestaurantOnboarding ? user?.email || "" : restaurant?.ownerEmail || "",
-    });
+    } as RestaurantFormData);
   }, [restaurant, user, isNewRestaurantOnboarding, form]);
 
 
@@ -189,7 +189,7 @@ export function RestaurantForm({ onFormSubmit, restaurant }: RestaurantFormProps
             description: "Novo restaurante adicionado.",
         });
       }
-      form.reset({ ...defaultValues, cep: '' });
+      form.reset({ ...defaultValues, cep: '' } as RestaurantFormData);
       onFormSubmit();
     } catch (error: any) {
         console.error(error);
