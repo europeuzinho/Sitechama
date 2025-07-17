@@ -86,6 +86,7 @@ export function RestaurantForm({ onFormSubmit, restaurant }: RestaurantFormProps
         cep: "",
         ...(restaurant ? { ...restaurant } : {}),
         ownerEmail: isNewRestaurantOnboarding ? user?.email || "" : restaurant?.ownerEmail || "",
+        category: restaurant?.category || undefined,
     } as RestaurantFormData,
   });
 
@@ -100,6 +101,7 @@ export function RestaurantForm({ onFormSubmit, restaurant }: RestaurantFormProps
         ...restaurant,
         cep: restaurant?.payoutSettings?.cnpj || "",
         ownerEmail: isNewRestaurantOnboarding ? user?.email || "" : restaurant?.ownerEmail || "",
+        category: restaurant?.category || undefined,
     } as RestaurantFormData);
   }, [restaurant, user, isNewRestaurantOnboarding, form]);
 
@@ -403,3 +405,5 @@ export function RestaurantForm({ onFormSubmit, restaurant }: RestaurantFormProps
     </Form>
   );
 }
+
+    
