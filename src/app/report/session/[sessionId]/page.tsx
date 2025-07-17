@@ -207,7 +207,7 @@ export default function SessionReportPage() {
                              <span>{formatCurrency(expectedCashInDrawer)}</span>
                          </div>
                          <div className="flex justify-between font-bold text-sm pt-1">
-                             <span>(>) Contado na Gaveta</span>
+                             <span>{'(>)'} Contado na Gaveta</span>
                              <span>{formatCurrency(endAmount)}</span>
                          </div>
                          <Separator className="my-1"/>
