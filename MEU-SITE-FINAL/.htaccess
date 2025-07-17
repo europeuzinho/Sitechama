@@ -1,34 +1,10 @@
+
 <IfModule mod_rewrite.c>
-  # Ativa o motor de reescrita de URL
   RewriteEngine On
-
-  # Define o arquivo padrão para diretórios
-  DirectoryIndex index.html
-
-  # Redireciona todas as requisições que não são para um arquivo ou diretório real
-  # para o index.html, permitindo que o Next.js gerencie as rotas.
+  RewriteBase /
+  RewriteRule ^index\.html$ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-l
   RewriteRule . /index.html [L]
 </IfModule>
-
-<IfModule mod_headers.c>
-  # Configura o cache para diferentes tipos de arquivo para melhorar a performance
-  # As pastas do Next.js (com hashes) podem ser cacheadas por muito tempo
-  <filesMatch "\.(ico|jpg|jpeg|png|gif|svg|woff|woff2|ttf|eot)$">
-    Header set Cache-Control "max-age=31536000, public"
-  </filesMatch>
-  <filesMatch "\.(css)$">
-    Header set Cache-Control "max-age=31536000, public"
-  </filesMatch>
-  <filesMatch "\.(js)$">
-    Header set Cache-Control "max-age=31536000, public"
-  </filesMatch>
-  # Arquivos HTML não devem ser cacheados por muito tempo
-  <filesMatch "\.(html)$">
-    Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
-  </filesMatch>
-</IfModule>
-
-# Desativa a listagem de diretórios para segurança
-Options -Indexes
