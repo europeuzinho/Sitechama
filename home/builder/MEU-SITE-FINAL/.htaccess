@@ -1,0 +1,2 @@
+# Define o arquivo index.html como o arquivo padrão para qualquer diretório
+DirectoryIndex index.html
